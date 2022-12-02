@@ -33,6 +33,7 @@ ptyprocess==0.7.0
 pure-eval==0.2.2
 Pygments==2.11.2
 pyparsing==3.0.7
+pyserini==0.16.0
 python-dateutil==2.8.2
 pytrec-eval==0.5
 pytz==2022.1
