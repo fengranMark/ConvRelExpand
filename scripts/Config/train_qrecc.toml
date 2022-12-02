@@ -1,0 +1,55 @@
+title = "a basic config for pre-training on topiocqa benchmark."
+
+# [Model]
+model_type = "ANCE"
+pretrained_query_encoder = "checkpoints/ad-hoc-ance-msmarco"   # !!!
+pretrained_passage_encoder = "checkpoints/ad-hoc-ance-msmarco"   # !!!
+continue_train_query_encoder = false
+
+# model_type = "DPR-NQ"
+# pretrained_query_encoder = "facebook/dpr-question_encoder-single-nq-base"
+# pretrained_passage_encoder = "facebook/dpr-ctx_encoder-single-nq-base"
+
+#model_type = "DPR-RAW"
+#pretrained_query_encoder = "checkpoints/bert-base-uncased"
+#pretrained_passage_encoder = "checkpoints/bert-base-uncased"
+
+
+num_negatives = 1   # actually 1 + batchsize - 1
+max_concat_length = 512
+max_query_length = 64
+max_doc_length = 384
+
+# [Train]
+num_train_epochs = 40   # !!
+per_gpu_train_batch_size = 32    # !!
+n_gpu = 2   # !!
+disable_tqdm = true    # !!
+
+
+save_steps = 0.95   # !! int (steps) or float (ratio of a epoch)
+print_steps =  0.25  # print the loss
+learning_rate = 1e-5
+weight_decay = 0.0
+adam_epsilon = 1e-8
+num_warmup_portion = 0.1
+max_grad_norm = 1.0
+
+mode = "convq"
+use_last_response = false
+use_PRF = false
+PRF_mode = "soft"
+seed = 42
+
+use_data_percent = 1   # !!
+
+
+# [Input Data]
+train_file_path = "datasets/qrecc/new_train.json"
+PRF_file = "output/qrecc/dense_rel/train_rel_label_rawqp.json"
+
+
+# [Output]
+overwrite_output_dir = true
+log_dir_path = "output/train_qrecc/Log"
+model_output_path = "output/train_qrecc/Checkpoint"

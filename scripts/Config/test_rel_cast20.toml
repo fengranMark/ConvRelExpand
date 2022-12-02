@@ -1,0 +1,41 @@
+title = "the test script to test a model on topiocqa benchmarks"
+
+# [Model]
+query_encoder_checkpoint = "checkpoints/ad-hoc-ance-msmarco"   # !!!
+# query_encoder_checkpoint = "output/train_topiocqa/Checkpoint/model-0-epoch-29-step-21330-loss-0.0"
+pretrained_passage_encoder = "checkpoints/ad-hoc-ance-msmarco"   # !!!
+
+max_concat_length = 512 # 512
+max_query_length = 64
+max_doc_length = 384
+seed = 42
+
+# [Model]
+model_type = "ANCE"
+
+# [Test]
+
+# since the passage collection is too big, we split it into several blocks and test block by block.
+# Finally merge them to get the final results.
+passage_block_num = 16 # 16 for cast
+
+per_gpu_eval_batch_size = 2
+n_gpu = 1
+use_gpu = true
+top_n = 100
+use_data_percent = 1
+rel_threshold = 2
+cross_validate = false
+disable_tqdm = false
+use_last_response = false
+use_answer = false
+
+test_file_path = "datasets/cast20/dev_rel.json"
+trec_gold_qrel_file_path = "datasets/cast20/dev_rel_gold.trec"
+
+passage_collection_path= "datasets/cast20/collection.tsv"
+passage_embeddings_dir_path = "datasets/cast20/embeds"
+passage_offset2pid_path = "datasets/cast20/tokenized/offset2pid.pickle"
+
+# [Output]
+qrel_output_path = "output/cast20/dense_rel"   # will output two files: res.json and res.trec

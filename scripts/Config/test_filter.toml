@@ -1,0 +1,57 @@
+title = "a basic config for pre-training on topiocqa benchmark."
+
+# [Model]
+# model_type = "ANCE_context_attention"
+# model_type = "ANCE"
+# pretrained_query_encoder = "checkpoints/ad-hoc-ance-msmarco"   # !!!
+# pretrained_query_encoder = "output/train_topiocqa/filter/topiocqa_model-3-epoch-4-step-45510-loss-0.33214953541755676"
+# pretrained_passage_encoder = "checkpoints/ad-hoc-ance-msmarco"   # !!!
+# continue_train_query_encoder = "output/train_topiocqa/Checkpoint/model-0-epoch-29-step-21330-loss-0.0"
+# continue_train_query_encoder = false
+
+model_type = "BERT"
+pretrained_query_encoder = "output/train_qrecc/filter/bertfilter_model-0-epoch-0-step-342-loss-0.7472102642059326"
+# pretrained_passage_encoder = "facebook/dpr-ctx_encoder-single-nq-base"
+
+
+num_negatives = 1   # actually 1 + batchsize - 1
+max_concat_length = 128
+max_filter_length = 128
+max_query_length = 64
+max_doc_length = 384
+
+# [Train]
+num_train_epochs = 10   # !!
+per_gpu_train_batch_size = 32    # !!
+n_gpu = 1   # !!
+disable_tqdm = true    # !!
+
+
+save_steps = 0.95   # !! int (steps) or float (ratio of a epoch)
+print_steps =  0.25  # print the loss
+learning_rate = 1e-5
+weight_decay = 0.0
+adam_epsilon = 1e-8
+num_warmup_portion = 0.1
+max_grad_norm = 1.0
+
+mode = "convq"
+use_last_response = false
+use_wrong_last_response = false
+skip_all_zero = false
+seed = 42
+
+use_data_percent = 1   # !!
+
+
+# [Input Data]
+test_file_path = "filter/data/topiocqa_dev_q_1.json"
+#test_file_path = "datasets/cast19/dev_rel.json"
+#test_file_path = "datasets/cast20/dev_rel.json"
+#test_file_path = "datasets/qrecc/filter_test_q_1.json"
+
+
+# [Output]
+overwrite_output_dir = true
+#test_output_file = "output/topiocqa/filter/topiocqa_dev_q_ancepred_1.json"
+#label_output_file = "output/topiocqa/dense_rel/dev_ancepred_label_rawq_1.json"
