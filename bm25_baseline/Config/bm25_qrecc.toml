@@ -1,7 +1,7 @@
-input_query_path = "output/qrecc/QR/test_QRIR_oracle_prefix.json"
+input_query_path = "output/qrecc/QR/test_qrecc.json"
 index_dir_path = "datasets/qrecc/indexes/bm25"
 
-query_type = "decode"
+query_type = "convq"
 bm25_k1 = 0.82
 bm25_b = 0.68
 top_k = 100
