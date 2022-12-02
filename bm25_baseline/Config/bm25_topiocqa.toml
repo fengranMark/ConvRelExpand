@@ -1,23 +1,16 @@
-#input_query_path = "datasets/topiocqa/dev_new.json"
-input_query_path = "output/topiocqa/QR/dev_t5_oracle_qrecc.json"
-input_query_path_2 = "output/topiocqa/QR/dev_t5_answer.json"
+input_query_path = "datasets/topiocqa/dev_new.json"
 index_dir_path = "datasets/topiocqa/indexes/bm25"
 
-query_type = "decode"
-eval_type = "oracle+answer"
-#bm25_k1 = 0.9
-#bm25_b = 0.4
-bm25_k1 = 1.4
-bm25_b = 0.25
+query_type = "convq"
+bm25_k1 = 0.9
+bm25_b = 0.4
 top_k = 100
 rel_threshold = 1
 add_topic = false
 use_PRF = false
-use_overlap = false
 
 
 output_dir_path = "output/topiocqa/bm25"
 gold_qrel_file_path = "datasets/topiocqa/dev_gold.trec"
 PRF_file = "output/topiocqa/bm25/dev_rel_label_rawq_token.json" 
-# PRF_file = "datasets/topiocqa/dev_sub_topic_label.json" 
 
