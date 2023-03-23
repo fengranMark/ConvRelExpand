@@ -15,16 +15,19 @@ title_col = 2
 def main(wiki_file, output_file):
 
     '''
+    # for TopiOCQA
     with open(wiki_file, 'r') as input:
         reader = csv.reader(input, delimiter="\t")
         with open(output_file, 'w') as output:
             for i, row in enumerate(tqdm(reader)):
                 if len(row[text_col]) == 0:
                     continue
-                text = row[text_col]
-                obj = {"id": f"doc{i}", "contents": text}
+                text = row[title_col] + ' ' + row[text_col]
+                obj = {"id": str(i)", "contents": text}
                 output.write(json.dumps(obj, ensure_ascii=False) + '\n')
     '''
+    
+    # for QReCC
     with open(output_file, 'w') as output:
         for line in tqdm(open(WIKI_FILE, "r")):
             try:
