@@ -29,7 +29,7 @@ def main(wiki_file, output_file):
         for line in tqdm(open(WIKI_FILE, "r")):
             try:
                 pid, passage = line.strip().split('\t')
-                obj = {"id": "doc" + str(pid), "contents": passage}
+                obj = {"id": str(pid), "contents": passage}
                 output.write(json.dumps(obj, ensure_ascii=False) + '\n')
             except:
                 continue
