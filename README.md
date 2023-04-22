@@ -1,8 +1,10 @@
 # ConvRelExpand
 
-Learning to Relate to Previous Turns in Conversational Search. A temporary repository of our SIGIR 2023 submission.
+Learning to Relate to Previous Turns in Conversational Search. A temporary repository of our KDD 2023 submission.
 
 # Running Steps - Example
+
+We take TopiOCQA dataset as example. (The same for the remaining datasets)
 
 ## 1. Download data and Preprocessing
 
@@ -10,10 +12,51 @@ Four public datasets can be download from [QReCC](https://github.com/apple/ml-qr
 
 ## 2. Generate gold pseudo relevant labels
 
+First, generate the qrel file by function "create_label_rel_turn" in "preprocess_topiocqa.py"
+
+Second, generate the pseudo relevant label (PRL) by
+```
+python test_rel_topiocqa.py --config=Config/test_rel_topiocqa.toml
+```
+
+The output file "(train)dev_rel_label.json" contains the PRL for each turn.
+
 ## 3. Train selector
 
-## 4. Evaluate with off-the-shelf retriever
+Use the pseudo relevant training data generated in step 2.
+```
+python train_selector.py --config=Config/train_selector.toml
+```
 
-## 5. Jointly train selector and retriever
+Then the trained selector can be used for turn relevance judgment for off-the-shelf retriever.
 
-## 6. Evaluate with fine-tuned retriever
+## 4. Generating dense indexing
+
+```
+python gen_tokenized_doc.py --config=Config/gen_tokenized_doc.toml
+python gen_doc_embeddings.py --config=Config/gen_doc_embeddings.toml
+```
+
+## 5. Evaluate with off-the-shelf retriever
+
+Download [ANCE](https://huggingface.co/castorini/ance-msmarco-passage) model.
+
+Change the config with using ANCE as backbone and "True" for "use_PRL"
+```
+python test_topiocqa.py --config=Config/test_topiocqa.toml
+```
+
+## 6. Jointly train selector and retriever
+
+Using both the pseudo relevant training data generated in step 2 and conversational search data.
+
+```
+python train_filter_ranking.py --config=Config/train_filter_ranking.toml
+```
+
+## 7. Evaluate with fine-tuned retriever
+
+Change the config with using S-R model trained in step 6 as backbone and "False" for "use_PRL"
+```
+python test_topiocqa.py --config=Config/test_topiocqa.toml
+```
