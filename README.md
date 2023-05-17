@@ -2,6 +2,16 @@
 
 A temporary repository of our KDD 2023 accepted paper - Learning to Relate to Previous Turns in Conversational Search.
 
+# Environment Dependency
+
+Main packages:
+- python 3.8
+- torch 1.8.1
+- transformer 4.2.0
+- numpy 1.22
+- faiss-gpu 1.7.2
+- pyserini 0.16
+
 # Running Steps - Example
 
 We take TopiOCQA dataset as example. (The same for the remaining datasets)
