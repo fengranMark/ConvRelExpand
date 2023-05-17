@@ -1,6 +1,6 @@
 # ConvRelExpand
 
-Learning to Relate to Previous Turns in Conversational Search. A temporary repository of our KDD 2023 submission.
+A temporary repository of our KDD 2023 accepted paper - Learning to Relate to Previous Turns in Conversational Search.
 
 # Running Steps - Example
 
