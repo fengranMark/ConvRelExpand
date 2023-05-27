@@ -61,7 +61,7 @@ python test_topiocqa.py --config=Config/test_topiocqa.toml
 Using both the pseudo relevant training data generated in step 2 and conversational search data.
 
 ```
-python train_filter_ranking.py --config=Config/train_filter_ranking.toml
+python train_selector_ranking.py --config=Config/train_selector_ranking.toml
 ```
 
 ## 7. Evaluate with fine-tuned retriever
