@@ -70,3 +70,19 @@ Change the config with using S-R model trained in step 6 as backbone and "False"
 ```
 python test_topiocqa.py --config=Config/test_topiocqa.toml
 ```
+
+## Cite Format
+  @inproceedings{10.1145/3580305.3599411,
+  author = {Mo, Fengran and Nie, Jian-Yun and Huang, Kaiyu and Mao, Kelong and Zhu, Yutao and Li, Peng and Liu, Yang},
+  title = {Learning to Relate to Previous Turns in Conversational Search},
+  year = {2023},
+  isbn = {9798400701030},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  url = {https://doi.org/10.1145/3580305.3599411},
+  doi = {10.1145/3580305.3599411},
+  booktitle = {Proceedings of the 29th ACM SIGKDD Conference on Knowledge Discovery and Data Mining},
+  pages = {1722–1732},
+  numpages = {11},
+  series = {KDD '23}
+  }
