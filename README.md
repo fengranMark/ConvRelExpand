@@ -72,6 +72,8 @@ python test_topiocqa.py --config=Config/test_topiocqa.toml
 ```
 
 ## Cite Format
+
+  ```
   @inproceedings{10.1145/3580305.3599411,
   author = {Mo, Fengran and Nie, Jian-Yun and Huang, Kaiyu and Mao, Kelong and Zhu, Yutao and Li, Peng and Liu, Yang},
   title = {Learning to Relate to Previous Turns in Conversational Search},
@@ -86,3 +88,4 @@ python test_topiocqa.py --config=Config/test_topiocqa.toml
   numpages = {11},
   series = {KDD '23}
   }
+  ```
